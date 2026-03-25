@@ -18,10 +18,11 @@ public class LoginPage {
 	@FindBy(name = "username")WebElement txtUserName ;
 	@FindBy(name = "password") WebElement txtPassword;
 	@FindBy(xpath = "//button[@type='submit']") WebElement btnSubmit;
-	
+	@FindBy(xpath = "//p[text()='Dashboard']") WebElement dashboardTile;
+	@FindBy(xpath ="//b[text()='7rmart supermarket']") WebElement applicationTitle;
 	public void enterUserNameOnUserNameField(String username)
 	{
-		txtUserName.click();
+		//txtUserName.click();
 		txtUserName.sendKeys(username);
 	}
 	
@@ -35,6 +36,16 @@ public class LoginPage {
 		btnSubmit.click();
 	}
 	
+	public boolean isDashboardDisplayed() {
+		return dashboardTile.isDisplayed();
+	}
 	
+	public String getApplicationTitle() {
+		return applicationTitle.getText();
+	}
+	
+	public boolean isSubmitBttonDisplayed() {
+		return btnSubmit.isDisplayed();
+	}
 
 }

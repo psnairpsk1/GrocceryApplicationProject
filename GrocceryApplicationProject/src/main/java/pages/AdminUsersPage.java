@@ -42,6 +42,7 @@ public class AdminUsersPage {
 	WebElement btnSearchUser;
 	@FindBy(xpath = "//a[@class = 'btn btn-rounded btn-warning']")
 	WebElement btnResetSearch;
+	@FindBy(xpath = "//h4[text()='Search Admin Users']") WebElement titleSearchAdminUsers;
 
 	public void verifyUserisAbleToClickNewButton() {
 
@@ -95,5 +96,18 @@ public class AdminUsersPage {
 		btnResetSearch.click();
 
 	}
+	
+	public boolean isUserNameDisplayed() {
+		return txtAdminUserName.isDisplayed();
+	}
 
+	public boolean istitleAdminUsersDisplayed()
+	{
+		return titleSearchAdminUsers.isDisplayed();
+	}
+	
+	public String getTitleAdminUsersDisplayed()
+	{
+		return titleSearchAdminUsers.getText();
+	}
 }

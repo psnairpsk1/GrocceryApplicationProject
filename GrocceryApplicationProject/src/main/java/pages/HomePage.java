@@ -25,6 +25,8 @@ public class HomePage {
 	@FindBy(xpath = "//i[@class='ace-icon fa fa-power-off']") WebElement logoutOption;
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-admin' and @class='small-box-footer']") WebElement adminUsersMoreInfo;
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-news' and @class = 'small-box-footer']") WebElement manageNews;
+	@FindBy(xpath="//a[@class='btn btn-rounded btn-danger']") WebElement btnNew;
+	@FindBy(xpath ="//b[text()='7rmart supermarket']") WebElement applicationTitle;
 	
 	public void clickProfileIcon(){
 		imgProfile.click();
@@ -47,5 +49,14 @@ public class HomePage {
 	
 	public void clickManageNews() {
 		manageNews.click();
+	}
+	
+	public boolean isNewButtonDisplayed() {
+		return btnNew.isDisplayed();
+		
+	}
+	
+	public String getApplicationTitle() {
+		return applicationTitle.getText();
 	}
 }

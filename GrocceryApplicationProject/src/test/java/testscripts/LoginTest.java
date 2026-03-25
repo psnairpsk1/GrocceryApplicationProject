@@ -4,58 +4,76 @@ import java.io.IOException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import automationcore.TestNGBase;
+import constant.Constants;
 import pages.LoginPage;
 import utilities.ExcelUtility;
 
 public class LoginTest extends TestNGBase {
 
-	@Test(priority = 1 , description = "Validating the login with valid username and password")
-	public void verifyUserLoginwithValidCredentials() throws IOException
-	{
+	@Test(priority = 1, description = "Validating the login with valid username and password",groups = {"smoke"})
+	public void verifyUserLoginwithValidCredentials() throws IOException {
 
-	
-		
 		String username = ExcelUtility.readStringData(0, 0, "LoginPage");
 		String password = ExcelUtility.readStringData(0, 1, "LoginPage");
 		LoginPage login = new LoginPage(driver);
 		login.enterUserNameOnUserNameField(username);
 		login.enterPasswordeOnPasswordField(password);
 		login.clickSubmitButton();
-		
+		boolean dashboardDisplay = login.isDashboardDisplayed();
+		Assert.assertTrue(dashboardDisplay, Constants.VALIDCREDENTIALERROR);
 	}
+
 	@Test(priority = 2, description = "Validating the login with valid username and invalid password")
-	public void verifyUserLoginwithValidUsernameAndInvalidPassword() throws IOException
-	{
+	public void verifyUserLoginwithValidUsernameAndInvalidPassword() throws IOException {
 		String username = ExcelUtility.readStringData(1, 0, "LoginPage");
 		String password = ExcelUtility.readStringData(1, 1, "LoginPage");
 		LoginPage login = new LoginPage(driver);
 		login.enterUserNameOnUserNameField(username);
 		login.enterPasswordeOnPasswordField(password);
 		login.clickSubmitButton();
-		
+		String actual = login.getApplicationTitle();
+		String expected = "7rmart supermarket";
+		Assert.assertEquals(actual, expected,"User was able to login with invalid password");
+				
+
 	}
-	@Test (priority = 3 , description = "Validating the login with invalid username and valid password")
-	public void verifyUserLoginwithInValidUsernameAndValidPassword() throws IOException
-	{
+
+	@Test(priority = 3, description = "Validating the login with invalid username and valid password")
+	public void verifyUserLoginwithInValidUsernameAndValidPassword() throws IOException {
 		String username = ExcelUtility.readStringData(2, 0, "LoginPage");
 		String password = ExcelUtility.readStringData(2, 1, "LoginPage");
 		LoginPage login = new LoginPage(driver);
 		login.enterUserNameOnUserNameField(username);
 		login.enterPasswordeOnPasswordField(password);
 		login.clickSubmitButton();
+		boolean dashboardDisplay = login.isDashboardDisplayed();
+		Assert.assertFalse(dashboardDisplay, "ERROR: Dashboard was displayed! User logged in with invalid credentials.");
+
+
 	}
-	@Test (priority = 4 , description = "Validating the login with invalid username and invalid password")
-	public void verifyUserLoginwithInValidCredentials() throws IOException
-	{
-		String username = ExcelUtility.readStringData(3, 0, "LoginPage");
-		String password = ExcelUtility.readStringData(3, 1, "LoginPage");
+
+	@Test(priority = 4, description = "Validating the login with invalid username and invalid password",groups = {"smoke"} ,dataProvider = "loginProvider")
+	public void verifyUserLoginwithInValidCredentials(String username,String password) throws IOException {
+		//String username = ExcelUtility.readStringData(3, 0, "LoginPage");
+		//String password = ExcelUtility.readStringData(3, 1, "LoginPage");
+		
 		LoginPage login = new LoginPage(driver);
 		login.enterUserNameOnUserNameField(username);
 		login.enterPasswordeOnPasswordField(password);
 		login.clickSubmitButton();
 	}
-	
+	 @DataProvider(name = "loginProvider") 
+	 	public Object[][] getDataFromDataProvider() throws IOException { 
+	  
+	 		return new Object[][] { new Object[] { "admin", "admin22" }, new Object[] { "admin123", "123" }, 
+	 				// new Object[] {ExcelUtility.getStringData(3, 
+	 				// 0,"Login"),ExcelUtility.getStringData(3,1 ,"Login")} 
+	 		}; 
+	 	}
+
 }

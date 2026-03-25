@@ -2,7 +2,9 @@ package testscripts;
 
 import java.io.IOException;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.Assertion;
 
 import automationcore.TestNGBase;
 import pages.AdminUsersPage;
@@ -35,10 +37,12 @@ public class AdminUsersTest extends TestNGBase {
 		admin.enterPasswordOnAdminPasswordField(adminPassword);
 		admin.selectUserRoleFromuserType(userType);
 		admin.clickSaveButton();
+		boolean txtAdminUserNameDisplay = admin.isUserNameDisplayed();
+		Assert.assertFalse(txtAdminUserNameDisplay,"Error : The user is in Admin Users Creation Page");
 
 	}
 
-	@Test(priority = 2 , description = "Validating the user is ableto search a user")
+	@Test(priority = 2 , description = "Validating the user is able to search a user")
 	public void verifyUserIsAbleToSearchAUser() throws IOException {
 		String username = ExcelUtility.readStringData(0, 0, "LoginPage");
 		String password = ExcelUtility.readStringData(0, 1, "LoginPage");
@@ -58,6 +62,8 @@ public class AdminUsersTest extends TestNGBase {
 		admin.enterUserNameOnAdminSearchUserNameField(adminUserName);
 		admin.selectUserRoleFromSearchUserType(userType);
 		admin.clickSearchButtonAfterInputTheValues();
+		boolean titleSearchAdminUsers = admin.istitleAdminUsersDisplayed();
+		Assert.assertTrue(titleSearchAdminUsers, "Error : The user is in Admin Users List Page");
 	}
 
 	@Test(priority = 3 , description = "Validating the reset action on users list")
@@ -77,10 +83,14 @@ public class AdminUsersTest extends TestNGBase {
 		String userType = ExcelUtility.readStringData(0, 2, "AdminUsers");
 		AdminUsersPage admin = new AdminUsersPage(driver);
 		admin.clickSearchButton();
+		String actual = admin.getTitleAdminUsersDisplayed();
 		admin.enterUserNameOnAdminSearchUserNameField(adminUserName);
 		admin.selectUserRoleFromSearchUserType(userType);
 		admin.clickSearchButtonAfterInputTheValues();
 		admin.clickResetButton();
+		//Assertion Area
+		String expected = "Search Admin Users";
+		Assert.assertEquals(actual, expected,"Error : The user is in home page");
 	}
 
 }

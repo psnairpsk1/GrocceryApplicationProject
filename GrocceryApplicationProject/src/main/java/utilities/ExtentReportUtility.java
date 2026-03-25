@@ -15,6 +15,7 @@ public class ExtentReportUtility {
 
 		extentReports.setSystemInfo("Organization", "Obsqura");
 		extentReports.setSystemInfo("Name", " Prasanth"); // provides context of the report
+		extentReports.setSystemInfo("Designation", " QA Engineer");
 		return extentReports;
 
 	}

@@ -4,6 +4,7 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.io.IOException;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationcore.TestNGBase;
@@ -12,7 +13,7 @@ import pages.LoginPage;
 import utilities.ExcelUtility;
 
 public class HomeTest extends TestNGBase{
-	@Test
+	@Test(retryAnalyzer = retry.Retry.class)
 	public void verifyUserIsAbleToSuccessfullyLogOut() throws IOException, AWTException{	
 		
 		String username = ExcelUtility.readStringData(0, 0, "LoginPage");
@@ -23,10 +24,16 @@ public class HomeTest extends TestNGBase{
 		login.clickSubmitButton();
 	
 		HomePage home = new HomePage(driver);
-		home.clickAdminMoreInfo();
-		home.clickManageNews();
-		//home.clickProfileIcon();
-		//home.clickLogout();
+		//home.clickAdminMoreInfo();
+		
+		//home.clickManageNews();
+		home.clickProfileIcon();
+		home.clickLogout();
+		//boolean btnNewFlag = home.isNewButtonDisplayed();
+		//Assert.assertFalse(btnNewFlag,"Error : The user is in admin user creation page");
+		String actual = home.getApplicationTitle();
+		String expected = "7rmart supermarket";
+		Assert.assertEquals(actual, expected,"User is in home page");
 		
 		
 		

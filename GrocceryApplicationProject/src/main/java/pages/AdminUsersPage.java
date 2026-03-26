@@ -10,8 +10,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import utilities.PageUtility;
+import utilities.WaitUtility;
+
 public class AdminUsersPage {
 	public WebDriver driver;
+	WaitUtility wait = new WaitUtility();
+	PageUtility page = new PageUtility();
 
 	public AdminUsersPage(WebDriver driver) {
 		// This catches the browser window opened by your test and brings it into this
@@ -61,12 +66,14 @@ public class AdminUsersPage {
 
 	public void selectUserRoleFromuserType(String userType) {
 
-		Select select = new Select(ddUserType);
-		select.selectByValue(userType);
+		//Select select = new Select(ddUserType);
+		//select.selectByValue(userType);
+		page.selectDropdownWithValue(ddUserType, userType);
 	}
 
 	public void clickSaveButton() {
 
+		wait.waitUntilElementToBeClickable(driver, btnSave);
 		btnSave.click();
 	}
 

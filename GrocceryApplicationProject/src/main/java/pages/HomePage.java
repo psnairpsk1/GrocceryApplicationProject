@@ -28,27 +28,29 @@ public class HomePage {
 	@FindBy(xpath="//a[@class='btn btn-rounded btn-danger']") WebElement btnNew;
 	@FindBy(xpath ="//b[text()='7rmart supermarket']") WebElement applicationTitle;
 	
-	public void clickProfileIcon(){
+	public HomePage clickProfileIcon(){
 		imgProfile.click();
+		return this;
 	}
-	public void clickLogout() throws AWTException {
+	public LoginPage clickLogout() throws AWTException {
 		
-		Robot rbt = new Robot();
-		//added slight delay to see the logout option
-		rbt.delay(500);
+	
 		logoutOption.click();
+		return new LoginPage(driver);
 		
 	}
 	
-	public void clickAdminMoreInfo() {
+	public AdminUsersPage clickAdminMoreInfo() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(adminUsersMoreInfo));
 		adminUsersMoreInfo.click();
+		return new AdminUsersPage(driver);
 		
 	}
 	
-	public void clickManageNews() {
+	public ManageNewsPage clickManageNews() {
 		manageNews.click();
+		return new ManageNewsPage(driver);
 	}
 	
 	public boolean isNewButtonDisplayed() {

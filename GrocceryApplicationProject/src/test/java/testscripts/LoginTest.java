@@ -10,20 +10,21 @@ import org.testng.annotations.Test;
 
 import automationcore.TestNGBase;
 import constant.Constants;
+import pages.HomePage;
 import pages.LoginPage;
 import utilities.ExcelUtility;
 
 public class LoginTest extends TestNGBase {
 
+	HomePage home;
 	@Test(priority = 1, description = "Validating the login with valid username and password",groups = {"smoke"})
 	public void verifyUserLoginwithValidCredentials() throws IOException {
 
 		String username = ExcelUtility.readStringData(0, 0, "LoginPage");
 		String password = ExcelUtility.readStringData(0, 1, "LoginPage");
 		LoginPage login = new LoginPage(driver);
-		login.enterUserNameOnUserNameField(username);
-		login.enterPasswordeOnPasswordField(password);
-		login.clickSubmitButton();
+		login.enterUserNameOnUserNameField(username).enterPasswordeOnPasswordField(password);
+		home = login.clickSubmitButton();
 		boolean dashboardDisplay = login.isDashboardDisplayed();
 		Assert.assertTrue(dashboardDisplay, Constants.VALIDCREDENTIALERROR);
 	}
@@ -33,9 +34,7 @@ public class LoginTest extends TestNGBase {
 		String username = ExcelUtility.readStringData(1, 0, "LoginPage");
 		String password = ExcelUtility.readStringData(1, 1, "LoginPage");
 		LoginPage login = new LoginPage(driver);
-		login.enterUserNameOnUserNameField(username);
-		login.enterPasswordeOnPasswordField(password);
-		login.clickSubmitButton();
+		login.enterUserNameOnUserNameField(username).enterPasswordeOnPasswordField(password).clickSubmitButton();
 		String actual = login.getApplicationTitle();
 		String expected = "7rmart supermarket";
 		Assert.assertEquals(actual, expected,Constants.HOMETITLECOMPARISONERROR);

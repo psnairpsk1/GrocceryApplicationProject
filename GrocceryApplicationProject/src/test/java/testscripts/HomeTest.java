@@ -14,22 +14,22 @@ import pages.LoginPage;
 import utilities.ExcelUtility;
 
 public class HomeTest extends TestNGBase{
+	HomePage home;
 	@Test(description = "Validating the user is able to successfully logout from the home page", retryAnalyzer = retry.Retry.class)
 	public void verifyUserIsAbleToSuccessfullyLogOut() throws IOException, AWTException{	
 		
 		String username = ExcelUtility.readStringData(0, 0, "LoginPage");
 		String password = ExcelUtility.readStringData(0, 1, "LoginPage");
 		LoginPage login = new LoginPage(driver);
-		login.enterUserNameOnUserNameField(username);
-		login.enterPasswordeOnPasswordField(password);
-		login.clickSubmitButton();
+		login.enterUserNameOnUserNameField(username).enterPasswordeOnPasswordField(password);
+		home = login.clickSubmitButton();
 	
-		HomePage home = new HomePage(driver);
+		
 		//home.clickAdminMoreInfo();
 		
 		//home.clickManageNews();
 		home.clickProfileIcon();
-		home.clickLogout();
+		login = home.clickLogout();
 		//boolean btnNewFlag = home.isNewButtonDisplayed();
 		//Assert.assertFalse(btnNewFlag,"Error : The user is in admin user creation page");
 		String actual = home.getApplicationTitle();

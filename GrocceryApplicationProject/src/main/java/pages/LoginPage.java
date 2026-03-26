@@ -20,20 +20,24 @@ public class LoginPage {
 	@FindBy(xpath = "//button[@type='submit']") WebElement btnSubmit;
 	@FindBy(xpath = "//p[text()='Dashboard']") WebElement dashboardTile;
 	@FindBy(xpath ="//b[text()='7rmart supermarket']") WebElement applicationTitle;
-	public void enterUserNameOnUserNameField(String username)
+	
+	public LoginPage enterUserNameOnUserNameField(String username)
 	{
 		//txtUserName.click();
 		txtUserName.sendKeys(username);
+		return this;
 	}
 	
-	public void enterPasswordeOnPasswordField(String password)
+	public LoginPage enterPasswordeOnPasswordField(String password)
 	{
 		txtPassword.sendKeys(password);
+		return this;
 	}
 	
-	public void clickSubmitButton()
+	public HomePage clickSubmitButton()
 	{
 		btnSubmit.click();
+		return new HomePage(driver);
 	}
 	
 	public boolean isDashboardDisplayed() {

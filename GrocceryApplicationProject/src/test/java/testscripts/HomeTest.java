@@ -8,12 +8,13 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationcore.TestNGBase;
+import constant.Constants;
 import pages.HomePage;
 import pages.LoginPage;
 import utilities.ExcelUtility;
 
 public class HomeTest extends TestNGBase{
-	@Test(retryAnalyzer = retry.Retry.class)
+	@Test(description = "Validating the user is able to successfully logout from the home page", retryAnalyzer = retry.Retry.class)
 	public void verifyUserIsAbleToSuccessfullyLogOut() throws IOException, AWTException{	
 		
 		String username = ExcelUtility.readStringData(0, 0, "LoginPage");
@@ -33,7 +34,7 @@ public class HomeTest extends TestNGBase{
 		//Assert.assertFalse(btnNewFlag,"Error : The user is in admin user creation page");
 		String actual = home.getApplicationTitle();
 		String expected = "7rmart supermarket";
-		Assert.assertEquals(actual, expected,"User is in home page");
+		Assert.assertEquals(actual, expected,Constants.LOGOUTCHECKERROR);
 		
 		
 		

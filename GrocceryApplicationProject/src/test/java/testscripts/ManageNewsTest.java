@@ -2,9 +2,11 @@ package testscripts;
 
 import java.io.IOException;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationcore.TestNGBase;
+import constant.Constants;
 import pages.AdminUsersPage;
 import pages.HomePage;
 import pages.LoginPage;
@@ -34,7 +36,10 @@ public class ManageNewsTest extends TestNGBase {
 		news.saveNews();
 
 		// to view or navigate the list
-		driver.navigate().to("https://groceryapp.uniqassosiates.com/admin/list-news");
+		//driver.navigate().to("https://groceryapp.uniqassosiates.com/admin/list-news");
+		driver.get("https://groceryapp.uniqassosiates.com/admin/list-news");
+		boolean flagPageTitleStatus = news.isPageTitleDisplayed();
+		Assert.assertTrue(flagPageTitleStatus,Constants.PAGETITLESTATUSERROR);
 
 	}
 
@@ -55,6 +60,8 @@ public class ManageNewsTest extends TestNGBase {
 		String newsToSearch = ExcelUtility.readStringData(0, 0, "News");
 		news.enterNewsTitle(newsToSearch);
 		news.clickForFilteringNews();
+		boolean flagPageTitleSearchManageNewsStatus = news.isPageTitleSearchManageNewsDisplayed();
+		Assert.assertTrue(flagPageTitleSearchManageNewsStatus,Constants.PAGETITLESEARCHMANAGENEWSSTATUSERROR);
 
 	}
 

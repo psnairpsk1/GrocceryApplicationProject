@@ -38,7 +38,7 @@ public class LoginTest extends TestNGBase {
 		login.clickSubmitButton();
 		String actual = login.getApplicationTitle();
 		String expected = "7rmart supermarket";
-		Assert.assertEquals(actual, expected,"User was able to login with invalid password");
+		Assert.assertEquals(actual, expected,Constants.HOMETITLECOMPARISONERROR);
 				
 
 	}
@@ -52,7 +52,7 @@ public class LoginTest extends TestNGBase {
 		login.enterPasswordeOnPasswordField(password);
 		login.clickSubmitButton();
 		boolean dashboardDisplay = login.isDashboardDisplayed();
-		Assert.assertFalse(dashboardDisplay, "ERROR: Dashboard was displayed! User logged in with invalid credentials.");
+		Assert.assertFalse(dashboardDisplay, Constants.DASHBOARDDISPLAYEDERROR);
 
 
 	}

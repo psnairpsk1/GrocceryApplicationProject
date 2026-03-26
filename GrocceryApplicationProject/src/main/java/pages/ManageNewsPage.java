@@ -25,6 +25,8 @@ public class ManageNewsPage {
 	@FindBy(xpath = "//input[@name = 'un']") WebElement txtNewsTitle;
 	@FindBy(xpath = "//button[@class='btn btn-danger btn-fix']") WebElement btnGetNews;
 	@FindBy(xpath = "//a[@class = 'btn btn-default btn-fix']") WebElement btnResetNews;
+	@FindBy(xpath = "//h1[text()='Manage News']") WebElement pageTitle;
+	@FindBy(xpath = "//h4[text()='Search Manage News']") WebElement pageTitleSearchManageNews;
 	public void clickAddNews() {
 		btnAddNews.click();
 
@@ -52,5 +54,12 @@ public class ManageNewsPage {
 	
 	public void clickResetNewsTitleList() {
 		btnResetNews.click();
+	}
+	
+	public boolean isPageTitleDisplayed() {
+		return pageTitle.isDisplayed();
+	}
+	public boolean isPageTitleSearchManageNewsDisplayed() {
+		return pageTitleSearchManageNews.isDisplayed();
 	}
 }

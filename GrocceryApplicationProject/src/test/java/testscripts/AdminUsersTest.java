@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import org.testng.asserts.Assertion;
 
 import automationcore.TestNGBase;
+import constant.Constants;
 import pages.AdminUsersPage;
 import pages.HomePage;
 import pages.LoginPage;
@@ -38,7 +39,7 @@ public class AdminUsersTest extends TestNGBase {
 		admin.selectUserRoleFromuserType(userType);
 		admin.clickSaveButton();
 		boolean txtAdminUserNameDisplay = admin.isUserNameDisplayed();
-		Assert.assertFalse(txtAdminUserNameDisplay,"Error : The user is in Admin Users Creation Page");
+		Assert.assertFalse(txtAdminUserNameDisplay,Constants.ADDNEWUSERERROR);
 
 	}
 
@@ -63,7 +64,7 @@ public class AdminUsersTest extends TestNGBase {
 		admin.selectUserRoleFromSearchUserType(userType);
 		admin.clickSearchButtonAfterInputTheValues();
 		boolean titleSearchAdminUsers = admin.istitleAdminUsersDisplayed();
-		Assert.assertTrue(titleSearchAdminUsers, "Error : The user is in Admin Users List Page");
+		Assert.assertTrue(titleSearchAdminUsers, Constants.SEARCHUSERERROR);
 	}
 
 	@Test(priority = 3 , description = "Validating the reset action on users list")
@@ -90,7 +91,7 @@ public class AdminUsersTest extends TestNGBase {
 		admin.clickResetButton();
 		//Assertion Area
 		String expected = "Search Admin Users";
-		Assert.assertEquals(actual, expected,"Error : The user is in home page");
+		Assert.assertEquals(actual, expected,Constants.RESETUSERLISTERROR);
 	}
 
 }

@@ -47,63 +47,81 @@ public class AdminUsersPage {
 	WebElement btnSearchUser;
 	@FindBy(xpath = "//a[@class = 'btn btn-rounded btn-warning']")
 	WebElement btnResetSearch;
+	@FindBy(xpath = "//button[@class = 'btn btn-block-sm btn-danger' and @ name='Search']")
+	WebElement btnResetSearchList;
 	@FindBy(xpath = "//h4[text()='Search Admin Users']") WebElement titleSearchAdminUsers;
 
-	public void verifyUserisAbleToClickNewButton() {
+	public AdminUsersPage verifyUserisAbleToClickNewButton() {
 
 		btnNew.click();
+		return new AdminUsersPage(driver);
 	}
 
-	public void enterUserNameOnAdminUserNameField(String adminUserName) {
+	public AdminUsersPage enterUserNameOnAdminUserNameField(String adminUserName) {
 
 		txtAdminUserName.sendKeys(adminUserName);
+		return this;
 	}
 
-	public void enterPasswordOnAdminPasswordField(String adminPassword) {
+	public AdminUsersPage enterPasswordOnAdminPasswordField(String adminPassword) {
 
 		txtAdminPassword.sendKeys(adminPassword);
+		return this;
 	}
 
-	public void selectUserRoleFromuserType(String userType) {
+	public AdminUsersPage selectUserRoleFromuserType(String userType) {
 
 		//Select select = new Select(ddUserType);
 		//select.selectByValue(userType);
 		page.selectDropdownWithValue(ddUserType, userType);
+		return new AdminUsersPage(driver);
 	}
 
-	public void clickSaveButton() {
+	public AdminUsersPage clickSaveButton() {
 
 		wait.waitUntilElementToBeClickable(driver, btnSave);
 		btnSave.click();
+		return new AdminUsersPage(driver);
 	}
 
-	public void clickSearchButton() {
+	public AdminUsersPage clickSearchButton() {
 		wait.waitUntilElementToBeClickable(driver, btnSearch);
 		btnSearch.click();
+		return new AdminUsersPage(driver);
 	}
 
-	public void enterUserNameOnAdminSearchUserNameField(String adminSearchUserName) {
+	public AdminUsersPage enterUserNameOnAdminSearchUserNameField(String adminSearchUserName) {
 
 		txtSearchAdminUserName.sendKeys(adminSearchUserName);
+		return this;
 	}
 
-	public void selectUserRoleFromSearchUserType(String searchUserType) {
+	public AdminUsersPage selectUserRoleFromSearchUserType(String searchUserType) {
 
 		Select select = new Select(ddSearchUserType);
 		select.selectByValue(searchUserType);
+		return new AdminUsersPage(driver);
 	}
 
-	public void clickSearchButtonAfterInputTheValues() {
+	public AdminUsersPage clickSearchButtonAfterInputTheValues() {
 
 		btnSearchUser.click();
+		return new AdminUsersPage(driver);
 	}
 
-	public void clickResetButton() {
-
+	public AdminUsersPage clickResetButton() {
+		wait.waitUntilElementToBeClickable(driver, btnResetSearch);
 		btnResetSearch.click();
+		return new AdminUsersPage(driver);
 
 	}
 	
+	public AdminUsersPage clickResetSearchListButton() {
+		wait.waitUntilElementToBeClickable(driver, btnResetSearchList);
+		btnResetSearchList.click();
+		return new AdminUsersPage(driver);
+
+	}
 	public boolean isUserNameDisplayed() {
 		return txtAdminUserName.isDisplayed();
 	}

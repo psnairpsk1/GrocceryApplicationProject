@@ -18,47 +18,66 @@ public class ManageNewsPage {
 		// marked with @FindBy (listed below) on the actual webpage.
 		PageFactory.initElements(driver, this);
 	}
-	@FindBy (xpath = "//a[@class = 'btn btn-rounded btn-danger']" ) WebElement btnAddNews;
-	@FindBy(id = "news") WebElement txtAreaNews;
-	@FindBy(xpath = "//button[@name = 'create']") WebElement btnSave;
-	@FindBy(xpath = "//a[@class = 'btn btn-rounded btn-primary']") WebElement btnSearchNews;
-	@FindBy(xpath = "//input[@name = 'un']") WebElement txtNewsTitle;
-	@FindBy(xpath = "//button[@class='btn btn-danger btn-fix']") WebElement btnGetNews;
-	@FindBy(xpath = "//a[@class = 'btn btn-default btn-fix']") WebElement btnResetNews;
-	@FindBy(xpath = "//h1[text()='Manage News']") WebElement pageTitle;
-	@FindBy(xpath = "//h4[text()='Search Manage News']") WebElement pageTitleSearchManageNews;
-	public void clickAddNews() {
+
+	@FindBy(xpath = "//a[@class = 'btn btn-rounded btn-danger']")
+	WebElement btnAddNews;
+	@FindBy(id = "news")
+	WebElement txtAreaNews;
+	@FindBy(xpath = "//button[@name = 'create']")
+	WebElement btnSave;
+	@FindBy(xpath = "//a[@class = 'btn btn-rounded btn-primary']")
+	WebElement btnSearchNews;
+	@FindBy(xpath = "//input[@name = 'un']")
+	WebElement txtNewsTitle;
+	@FindBy(xpath = "//button[@class='btn btn-danger btn-fix']")
+	WebElement btnGetNews;
+	@FindBy(xpath = "//a[@class = 'btn btn-default btn-fix']")
+	WebElement btnResetNews;
+	@FindBy(xpath = "//h1[text()='Manage News']")
+	WebElement pageTitle;
+	@FindBy(xpath = "//h4[text()='Search Manage News']")
+	WebElement pageTitleSearchManageNews;
+
+	public ManageNewsPage clickAddNews() {
 		btnAddNews.click();
+		return this;
 
 	}
-	
-	public void enterMessageInNewsTextArea(String randomNews) {
+
+	public ManageNewsPage enterMessageInNewsTextArea(String randomNews) {
 		txtAreaNews.sendKeys(randomNews);
+		return this;
 	}
-	
-	public void saveNews() {
+
+	public ManageNewsPage saveNews() {
 		btnSave.click();
+		return this;
 	}
-	
-	public void clickSearchNews() {
+
+	public ManageNewsPage clickSearchNews() {
 		btnSearchNews.click();
+		return this;
 	}
-	
-	public void enterNewsTitle(String newsTitle) {
+
+	public ManageNewsPage enterNewsTitle(String newsTitle) {
 		txtNewsTitle.sendKeys(newsTitle);
+		return this;
 	}
-	
-	public void clickForFilteringNews() {
+
+	public ManageNewsPage clickForFilteringNews() {
 		btnGetNews.click();
+		return this;
 	}
-	
-	public void clickResetNewsTitleList() {
+
+	public ManageNewsPage clickResetNewsTitleList() {
 		btnResetNews.click();
+		return this;
 	}
-	
+
 	public boolean isPageTitleDisplayed() {
 		return pageTitle.isDisplayed();
 	}
+
 	public boolean isPageTitleSearchManageNewsDisplayed() {
 		return pageTitleSearchManageNews.isDisplayed();
 	}

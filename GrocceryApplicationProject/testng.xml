@@ -6,7 +6,7 @@
   <parameter name="browser" value="chrome"></parameter>
     <classes>
       <class name="testscripts.ManageNewsTest">
-      <methods><exclude name="verifyWhetherUserIsAbleToAddANews"></exclude>
+      <methods>
       <exclude name="verifyUserIsAbleToResetSearchNewsList"></exclude>
     </methods>
       </class>

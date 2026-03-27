@@ -78,7 +78,7 @@ public class AdminUsersPage {
 	}
 
 	public void clickSearchButton() {
-
+		wait.waitUntilElementToBeClickable(driver, btnSearch);
 		btnSearch.click();
 	}
 

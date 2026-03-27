@@ -92,7 +92,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">3 methods,   3 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -104,6 +104,16 @@
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Suite" title="testscripts.ManageNewsTest" class="method navigator-link" hash-for-method="verifySearchANews">verifySearchANews</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="testscripts.ManageNewsTest" class="method navigator-link" hash-for-method="verifyUserIsAbleToResetSearchNewsList">verifyUserIsAbleToResetSearchNewsList</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="testscripts.ManageNewsTest" class="method navigator-link" hash-for-method="verifyWhetherUserIsAbleToAddANews">verifyWhetherUserIsAbleToAddANews</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Suite -->
@@ -133,6 +143,24 @@
 (Validating the user can able to search a news)                  </em>
                 </div> <!-- method-content -->
               </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyUserIsAbleToResetSearchNewsList">
+                  </a> <!-- verifyUserIsAbleToResetSearchNewsList -->
+                  <span class="method-name">verifyUserIsAbleToResetSearchNewsList</span>
+                  <em>
+(Validating whether the user can able to reset the news list)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyWhetherUserIsAbleToAddANews">
+                  </a> <!-- verifyWhetherUserIsAbleToAddANews -->
+                  <span class="method-name">verifyWhetherUserIsAbleToAddANews</span>
+                  <em>
+(Validating the user is able to adda a new news)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
           </div> <!-- suite-Suite-class-passed -->
         </div> <!-- panel Suite -->
@@ -151,12 +179,7 @@
   &lt;test thread-count=&quot;5&quot; name=&quot;Test&quot;&gt;
     &lt;parameter name=&quot;browser&quot; value=&quot;chrome&quot;/&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;testscripts.ManageNewsTest&quot;&gt;
-        &lt;methods&gt;
-          &lt;exclude name=&quot;verifyWhetherUserIsAbleToAddANews&quot;/&gt;
-          &lt;exclude name=&quot;verifyUserIsAbleToResetSearchNewsList&quot;/&gt;
-        &lt;/methods&gt;
-      &lt;/class&gt; &lt;!-- testscripts.ManageNewsTest --&gt;
+      &lt;class name=&quot;testscripts.ManageNewsTest&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Test --&gt;
 &lt;/suite&gt; &lt;!-- Suite --&gt;
@@ -196,16 +219,24 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(3);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'verifySearchANews')
+data.setCell(0, 1, 'verifyWhetherUserIsAbleToAddANews')
 data.setCell(0, 2, 'testscripts.ManageNewsTest')
-data.setCell(0, 3, 6498);
+data.setCell(0, 3, 6898);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'verifySearchANews')
+data.setCell(1, 2, 'testscripts.ManageNewsTest')
+data.setCell(1, 3, 4392);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'verifyUserIsAbleToResetSearchNewsList')
+data.setCell(2, 2, 'testscripts.ManageNewsTest')
+data.setCell(2, 3, 3905);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 6 seconds</span>
+              <span class="suite-total-time">Total running time: 15 seconds</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -220,18 +251,9 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">2 ignored methods</span>
+            <span class="header-content">0 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">testscripts.ManageNewsTest</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">verifyUserIsAbleToResetSearchNewsList</span>
-                <br/>
-                <span class="ignored-method-name">verifyWhetherUserIsAbleToAddANews</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="chronological-Suite" class="panel">
@@ -247,11 +269,35 @@ return data;
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifySearchANews</span>
-                <span class="method-start">14650 ms</span>
+                <span class="method-start">4997 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">driverQuit([TestResult name=verifySearchANews status=SUCCESS method=ManageNewsTest.verifySearchANews()[pri:0, i...)</span>
-                <span class="method-start">21167 ms</span>
+                <span class="method-start">9402 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">browserLaunch(chrome)</span>
+                <span class="method-start">9406 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">verifyUserIsAbleToResetSearchNewsList</span>
+                <span class="method-start">11686 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">driverQuit([TestResult name=verifyUserIsAbleToResetSearchNewsList status=SUCCESS method=ManageNewsTest.verifyUs...)</span>
+                <span class="method-start">15597 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">browserLaunch(chrome)</span>
+                <span class="method-start">15601 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">verifyWhetherUserIsAbleToAddANews</span>
+                <span class="method-start">19768 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">driverQuit([TestResult name=verifyWhetherUserIsAbleToAddANews status=SUCCESS method=ManageNewsTest.verifyWhethe...)</span>
+                <span class="method-start">26672 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

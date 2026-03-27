@@ -15,6 +15,8 @@ import utilities.ExcelUtility;
 import utilities.FakerUtility;
 
 public class ManageNewsTest extends TestNGBase {
+	HomePage home;
+	ManageNewsPage news;
 	FakerUtility faker = new FakerUtility();
 	public String randomNews = faker.createRandomNews();
 
@@ -23,14 +25,13 @@ public class ManageNewsTest extends TestNGBase {
 		String username = ExcelUtility.readStringData(0, 0, "LoginPage");
 		String password = ExcelUtility.readStringData(0, 1, "LoginPage");
 		LoginPage login = new LoginPage(driver);
-		login.enterUserNameOnUserNameField(username);
-		login.enterPasswordeOnPasswordField(password);
-		login.clickSubmitButton();
+		login.enterUserNameOnUserNameField(username).enterPasswordeOnPasswordField(password);
+		home = login.clickSubmitButton();
 
-		HomePage home = new HomePage(driver);
-		home.clickManageNews();
 
-		ManageNewsPage news = new ManageNewsPage(driver);
+		news = home.clickManageNews();
+
+		//ManageNewsPage news = new ManageNewsPage(driver);
 		news.clickAddNews();
 		news.enterMessageInNewsTextArea(randomNews);
 		news.saveNews();
@@ -48,14 +49,13 @@ public class ManageNewsTest extends TestNGBase {
 		String username = ExcelUtility.readStringData(0, 0, "LoginPage");
 		String password = ExcelUtility.readStringData(0, 1, "LoginPage");
 		LoginPage login = new LoginPage(driver);
-		login.enterUserNameOnUserNameField(username);
-		login.enterPasswordeOnPasswordField(password);
-		login.clickSubmitButton();
+		login.enterUserNameOnUserNameField(username).enterPasswordeOnPasswordField(password);
+		home =login.clickSubmitButton();
 
-		HomePage home = new HomePage(driver);
-		home.clickManageNews();
+		//HomePage home = new HomePage(driver);
+		news = home.clickManageNews();
 
-		ManageNewsPage news = new ManageNewsPage(driver);
+		//ManageNewsPage news = new ManageNewsPage(driver);
 		news.clickSearchNews();
 		String newsToSearch = ExcelUtility.readStringData(0, 0, "News");
 		news.enterNewsTitle(newsToSearch);
@@ -70,19 +70,16 @@ public class ManageNewsTest extends TestNGBase {
 		String username = ExcelUtility.readStringData(0, 0, "LoginPage");
 		String password = ExcelUtility.readStringData(0, 1, "LoginPage");
 		LoginPage login = new LoginPage(driver);
-		login.enterUserNameOnUserNameField(username);
-		login.enterPasswordeOnPasswordField(password);
-		login.clickSubmitButton();
+		login.enterUserNameOnUserNameField(username).enterPasswordeOnPasswordField(password);
+		home = login.clickSubmitButton();
 
-		HomePage home = new HomePage(driver);
-		home.clickManageNews();
+		//HomePage home = new HomePage(driver);
+		news = home.clickManageNews();
 
-		ManageNewsPage news = new ManageNewsPage(driver);
+		//ManageNewsPage news = new ManageNewsPage(driver);
 		news.clickSearchNews();
 		String newsToSearch = ExcelUtility.readStringData(0, 0, "News");
-		news.enterNewsTitle(newsToSearch);
-		news.clickForFilteringNews();
-		news.clickResetNewsTitleList();
+		news.enterNewsTitle(newsToSearch).clickForFilteringNews().clickResetNewsTitleList();
 
 	}
 

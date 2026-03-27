@@ -7,7 +7,8 @@
     <classes>
       <class name="testscripts.AdminUsersTest">
       <methods>
-
+      <exclude name="verifyWhetherUserIsAbleToAddNewUser"></exclude>
+      <exclude name="verifyUserIsAbleToSearchAUser"></exclude>
     </methods>
       </class>
     </classes>

@@ -21,19 +21,19 @@ public class PageUtility {
 
 	}
 
-	public void selectDropdownWithIndex(WebElement element, int indexValue) {
+	public void selectDropdownWithIndexValue(WebElement element, int indexValue) {
 
 		Select object = new Select(element);
 		object.selectByIndex(indexValue);
 
 	}
 
-	public void verifyMouseHover(WebElement element, WebDriver driver) {
+	public void mouseHoverToAnElement(WebElement element, WebDriver driver) {
 		Actions act = new Actions(driver);
 		act.moveToElement(element).build().perform();
 	}
 
-	public void verifyRightClick(WebElement element, WebDriver driver) {
+	public void rightClickToAnElement(WebElement element, WebDriver driver) {
 		Actions act = new Actions(driver);
 		act.contextClick(element).build().perform();
 	}

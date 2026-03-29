@@ -11,8 +11,11 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import utilities.WaitUtility;
+
 public class HomePage {
 	public WebDriver driver;
+	WaitUtility wait = new WaitUtility();
 	public HomePage(WebDriver driver)
 	{
 		//This catches the browser window opened by your test and brings it into this class.
@@ -41,8 +44,7 @@ public class HomePage {
 	}
 	
 	public AdminUsersPage clickAdminMoreInfo() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.elementToBeClickable(adminUsersMoreInfo));
+		wait.waitUntilElementToBeClickable(driver, adminUsersMoreInfo);
 		adminUsersMoreInfo.click();
 		return new AdminUsersPage(driver);
 		

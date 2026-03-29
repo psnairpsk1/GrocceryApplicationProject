@@ -29,5 +29,10 @@ public class WaitUtility {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(EXPLICITWAIT));
 		wait.until(ExpectedConditions.attributeToBeNotEmpty(element, attributeName));
 	}
+	
+	public void waitUntilAttributeContains(WebDriver driver, WebElement element, String attributeName, String expectedValue) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(EXPLICITWAIT));
+        wait.until(ExpectedConditions.attributeContains(element, attributeName, expectedValue));
+    }
 
 }

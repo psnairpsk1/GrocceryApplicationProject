@@ -23,8 +23,8 @@ public class TestNGBase {
 	
 		//web driver declaration
 		public WebDriver driver;//webdriver its a predefined interface.
-		@BeforeMethod(alwaysRun = true)
-		@Parameters("browser")
+		@BeforeMethod(alwaysRun = true)//alwaysRun = true shows : it says the testcases belongs into "Smoke" or "Regression"
+		@Parameters("browser")//Instead of writing "chrome" directly in your Java code, you can pass the browser name dynamically from your TestNG XML file.
 		public void browserLaunch(String browser) throws Exception
 		{
 			prop = new Properties();
